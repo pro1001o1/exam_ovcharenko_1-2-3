@@ -6,14 +6,14 @@ public class Calculator {
     Scanner in = new Scanner(System.in);//обьявляем сканер
     public void simplecalc() {//метод предназначен для сканирования чисел сканером,а сканер действий прописан в каждом типе калькулятора
         System.out.print("Введите пример: ");
-        String[] input = in.nextLine().split(" ");
-        if (input.length !=3) {
+        String[] input = in.nextLine().split(" ");//в эту строку записывается пример,который ввел пользователь,но без пробелов,также пример расписывается как массив
+        if (input.length !=3) {//эта функция позволяет проверить,не ввел ли пользователь лишних цифр,или же он написал пример без пробелов
             System.out.print("Введена неправильная форма. Ожидается например \"a + b\"");
         }
-        num1 = Double.parseDouble(input[0]);
-        String operationType = input[1];  //вводим действие,которое хотим сделать
-        num2 = Double.parseDouble(input[2]);//вводим второе число
-        switch (operationType){
+        num1 = Double.parseDouble(input[0]);//благодаря парсингу,мы переводим тип double в тип string и даем индекс первому числу (в данном случае будет 0)
+        String operationType = input[1];  //назначаем индекс на тип string (в данном случае будет 1)
+        num2 = Double.parseDouble(input[2]);//благодаря парсингу,мы переводим тип double в тип string и даем индекс второму числу (в данном случае будет 2)
+        switch (operationType){//далее,при помощи оператора switch-case мы определяем,какие действия были введены пользователем.
             case "+" -> {result = num1 + num2;//сначала записываем результат в переменную благодаря оператору switch-case
                         System.out.println("Ваш результат: " + result + "\n");}//а после выводим его (действие сложения)
             case "-" -> {result = num1 - num2;//действие вычитания
@@ -26,15 +26,14 @@ public class Calculator {
     }
     public void roundcalc(){//в RoundedCalculator мы вводим действие,затем кол-во цифр после запятой и, сначала, считаем результат,
         System.out.print("Введите пример (сначала вводите пример через пробел,а после - кол-во чисел после запятой, также десятичные дроби пишите с точкой): ");
-        String[] input = in.nextLine().split(" ");
-        if (input.length !=4) {
+        String[] input = in.nextLine().split(" ");//в эту строку записывается пример,который ввел пользователь,но без пробелов,также пример расписывается как массив
+        if (input.length !=4) {//эта функция позволяет проверить,не ввел ли пользователь лишних цифр,или же он написал пример без пробелов
             System.out.print("Введена неправильная форма. Ожидается например \"a + b\" \n");
         }
-        num1 = Double.parseDouble(input[0]);
-
-        String operationType = input[1];  //вводим действие,которое хотим сделать
-        num2 = Double.parseDouble(input[2]);//вводим второе число
-        n = Double.parseDouble(input[3]);
+        num1 = Double.parseDouble(input[0]);//благодаря парсингу,мы переводим тип double в тип string и даем индекс первому числу (в данном случае будет 0)
+        String operationType = input[1];//назначаем индекс на тип string (в данном случае будет 1)
+        num2 = Double.parseDouble(input[2]);//благодаря парсингу,мы переводим тип double в тип string и даем индекс второму числу (в данном случае будет 2)
+        n = Double.parseDouble(input[3]);//благодаря парсингу,мы переводим тип double в тип string и даем индекс третьему числу,которое будет задавать кол-во чисел после точки и округлять до этого кол-ва  (в данном случае будет 3)
         double scale = Math.pow(10, n);//вводим переменную,в которой мы записываем цифру 10 в степени n
         switch (operationType){//используем оператор switch-case,чтобы записать результат примера в зависимости от действий
             case "+" -> result = num1 + num2;//действие сложения
@@ -47,19 +46,19 @@ public class Calculator {
     }
     public void log_sin_cos(){
         System.out.print("Введите то,что хотите найти (sin,cos или lg): ");
-        String[] input = in.nextLine().split(" ");
-        if (input.length !=2) {
+        String[] input = in.nextLine().split(" ");//в эту строку записывается пример,который ввел пользователь,но без пробелов,также пример расписывается как массив
+        if (input.length !=2) {//эта функция позволяет проверить,не ввел ли пользователь лишних цифр,или же он написал пример без пробелов
             System.out.print("Введена неправильная форма. Ожидается например \"a + b\"");
         }
-        String operationType = input[0];  //вводим действие,которое хотим сделать
-        num2 = Double.parseDouble(input[1]);//вводим второе число
+        String operationType = input[0];//назначаем индекс на тип string (в данном случае будет 0)
+        num2 = Double.parseDouble(input[1]);//благодаря парсингу,мы переводим тип double в тип string и даем индекс числу (в данном случае будет 1)
         switch (operationType){
             case "sin" -> {result = Math.sin(num2);//сначала записываем результат в переменную благодаря оператору switch-case
-                System.out.println("Ваш результат: " + result + "\n");}//а после выводим его (действие сложения)
-            case "cos" -> {result = Math.cos(num2);//действие вычитания
-                System.out.println("Ваш результат: " + result + "\n");}//действие вычитания
-            case "lg" -> {result = Math.log10(num2);//действие умножения
-                System.out.println("Ваш результат: " + result + "\n");}//действие умножения
+                System.out.println("Ваш результат: " + result + "\n");}//вывод синуса
+            case "cos" -> {result = Math.cos(num2);//нахождение косинуса благодаря функции Math.cos()
+                System.out.println("Ваш результат: " + result + "\n");}//вывод косинуса
+            case "lg" -> {result = Math.log10(num2);//нахождение десятичного логарифма благодаря функции Math.log10()
+                System.out.println("Ваш результат: " + result + "\n");}//вывод десятичного логарифма
         }
     }
 }
